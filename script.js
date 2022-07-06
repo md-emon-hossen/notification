@@ -10,59 +10,48 @@ var text=document.querySelector(".text");
 
 //diposite functiton
 dipositeBtn.addEventListener("click",()=>{
-
     //check if the deposite file is emtey or not
     if(dipositeFild.value == ''){
-
-        //if emtey the give akert
+         //if emtey the give akert
         alert("Enter your Diposite Amount");
     }else{
-
-        //if not emtey than excute the code
-        var mainBl=parseFloat(balance.textContent);
-        var dipo=parseFloat(dipositeFild.value);
-        var final=mainBl+dipo;;
-        balance.textContent=final;
-
-        // give notification
-        toest.style.display="block";
-        text.textContent="Your Deposite was Successfull ";
-
-        //remove notification
-        setTimeout(()=>{
-            toest.style.display="none";
-        },2500)
+        calculated(dipositeFild,"+");
+        toestFunction("Your Deposite was Successfull");
     }
-
-  
-
 });
 
 //withdoral functiobn
 widthdrowBtn.addEventListener("click",()=>{
-
     // check if the widthdroal filed is emteyh or not
     if(widthdrowFild.value == ''){
-
         //if emtey than give alert
         alert("Enter your Withdroal Amount");
     }else{
-
-        //if all ok than excitute the code
-        var mainBl=parseFloat(balance.textContent);
-        var withdro=parseFloat(widthdrowFild.value);
-        var final=mainBl- withdro;;
-        balance.textContent=final;
-        
-        //give notification
-        toest.style.display="block";
-        text.textContent="Your Withdrow was Successfull ";
-
-        //remove notiiication
-        setTimeout(()=>{
-        toest.style.display="none";
-        },2500)
+        calculated(widthdrowFild,"-");
+        toestFunction("Your Withdrow was Successfull ");
     }
-
-    
   });
+
+// calculated function
+function calculated(intigator,oparat){
+
+//if not emtey than excute the code
+var mainBl=parseFloat(balance.textContent);
+var dipo=parseFloat(intigator.value);
+var final=eval(mainBl+oparat+dipo);
+balance.textContent=final;
+}
+
+//notification functition
+function toestFunction(messege){
+     //give notification
+     toest.style.display="block";
+     text.textContent=messege;
+
+     //remove notiiication
+     setTimeout(()=>{
+     toest.style.display="none";
+     },5000)
+}
+
+
